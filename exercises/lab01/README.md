@@ -26,3 +26,13 @@ https://www.dealii.org/current/doxygen/deal.II/step_1.html https://www.dealii.or
 	- Refine the L-shaped mesh adaptively:
 		- Refine all cells with the distance between the center of the cell and re-entrant corner is smaller than 0.3.
 		- Refine exactly at the re-entrant corner (i.e. those with the corner as a vertex) several times.
+
+
+
+#### 4.
+
+With the reset_all_manifolds function ( first image),  the refinement is done only  one of the active cells. But the first step of the refinement when we don't use this reset function are not cleared to us .
+
+![](oldstep-1/cmake-build-debug/grid-2-reset.svg)
+
+![](oldstep-1/cmake-build-debug/grid-2-unreset.svg)
