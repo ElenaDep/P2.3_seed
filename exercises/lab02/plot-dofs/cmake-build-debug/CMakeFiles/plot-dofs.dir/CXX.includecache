@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/plot-dofs/plot-dofs.cc
+deal.II/dofs/dof_handler.h
+-
+deal.II/fe/fe_q.h
+-
+deal.II/grid/grid_generator.h
+-
+deal.II/grid/grid_out.h
+-
+deal.II/grid/manifold_lib.h
+-
+deal.II/grid/tria.h
+-
+deal.II/grid/tria_accessor.h
+-
+deal.II/grid/tria_iterator.h
+-
+deal.II/lac/vector.h
+-
+deal.II/numerics/data_out.h
+-
+cmath
+-
+fstream
+-
+iostream
+-
+

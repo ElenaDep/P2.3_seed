@@ -36,3 +36,7 @@ With the reset_all_manifolds function ( first image),  the refinement is done on
 ![](oldstep-1/cmake-build-debug/grid-2-reset.svg)
 
 ![](oldstep-1/cmake-build-debug/grid-2-unreset.svg)
+
+#### 5.
+
+![](oldstep-1/cmake-build-debug/grid-2-sm.svg)

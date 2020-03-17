@@ -53,7 +53,7 @@
 using namespace dealii;
 
 
-
+template <int dim>
 class Step3
 {
 public:
@@ -69,9 +69,9 @@ private:
   void solve ();
   void output_results () const;
 
-  Triangulation<2>     triangulation;
-  FE_Q<2>              fe;
-  DoFHandler<2>        dof_handler;
+  Triangulation<dim>     triangulation;
+  FE_Q<dim>              fe;
+  DoFHandler<dim>        dof_handler;
 
   SparsityPattern      sparsity_pattern;
   SparseMatrix<double> system_matrix;
@@ -81,7 +81,8 @@ private:
 };
 
 
-Step3::Step3 ()
+template <int dim>
+Step3<dim>::Step3 ()
   :
   fe (1),
   dof_handler (triangulation)
@@ -89,7 +90,8 @@ Step3::Step3 ()
 
 
 
-void Step3::make_grid ()
+template <int dim>
+void Step3<dim>::make_grid ()
 {
   GridGenerator::hyper_cube (triangulation, -1, 1);
   triangulation.refine_global (5);
@@ -102,7 +104,8 @@ void Step3::make_grid ()
 
 
 
-void Step3::setup_system ()
+template <int dim>
+void Step3<dim>::setup_system ()
 {
   dof_handler.distribute_dofs (fe);
   std::cout << "Number of degrees of freedom: "
@@ -121,10 +124,13 @@ void Step3::setup_system ()
 
 
 
-void Step3::assemble_system ()
+template <int dim>
+void
+Step3<dim>::assemble_system ()
+
 {
-  QGauss<2>  quadrature_formula(2);
-  FEValues<2> fe_values (fe, quadrature_formula,
+  QGauss<dim>  quadrature_formula(2);
+  FEValues<dim> fe_values (fe, quadrature_formula,
                          update_values | update_gradients | update_JxW_values);
 
   const unsigned int   dofs_per_cell = fe.dofs_per_cell;
@@ -135,8 +141,13 @@ void Step3::assemble_system ()
 
   std::vector<types::global_dof_index> local_dof_indices (dofs_per_cell);
 
-  DoFHandler<2>::active_cell_iterator cell = dof_handler.begin_active();
-  DoFHandler<2>::active_cell_iterator endc = dof_handler.end();
+  typename DoFHandler<dim>::active_cell_iterator cell = dof_handler.begin_active();
+  typename DoFHandler<dim>::active_cell_iterator endc = dof_handler.end();
+
+  //auto cell = dof_handler.begin_active()
+  //auto endc = dof_handler.end()
+  // for (auto cell: dof_handler.active_cell_iterators())
+
   for (; cell!=endc; ++cell)
     {
       fe_values.reinit (cell);
@@ -173,7 +184,7 @@ void Step3::assemble_system ()
   std::map<types::global_dof_index,double> boundary_values;
   VectorTools::interpolate_boundary_values (dof_handler,
                                             0,
-                                            ZeroFunction<2>(),
+                                            ZeroFunction<dim>(),
                                             boundary_values);
   MatrixTools::apply_boundary_values (boundary_values,
                                       system_matrix,
@@ -183,7 +194,8 @@ void Step3::assemble_system ()
 
 
 
-void Step3::solve ()
+template <int dim>
+void Step3<dim>::solve ()
 {
   SolverControl           solver_control (1000, 1e-12);
   SolverCG<>              solver (solver_control);
@@ -194,20 +206,22 @@ void Step3::solve ()
 
 
 
-void Step3::output_results () const
+template <int dim>
+void Step3<dim>::output_results () const
 {
-  DataOut<2> data_out;
+  DataOut<dim> data_out;
   data_out.attach_dof_handler (dof_handler);
   data_out.add_data_vector (solution, "solution");
   data_out.build_patches ();
 
-  std::ofstream output ("solution.gpl");
-  data_out.write_gnuplot (output);
+  std::ofstream output ("solution.vtu");
+  data_out.write_vtu (output);
 }
 
 
 
-void Step3::run ()
+template <int dim>
+void Step3<dim>::run ()
 {
   make_grid ();
   setup_system ();
@@ -222,7 +236,7 @@ int main ()
 {
   deallog.depth_console (2);
 
-  Step3 laplace_problem;
+  Step3<2> laplace_problem;
   laplace_problem.run ();
 
   return 0;

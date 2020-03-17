@@ -63,7 +63,7 @@ int main()
   std::cout << "Dofs: " << dh.n_dofs() << std::endl;
   std::cout << "Vertices: " << triangulation.n_vertices() << std::endl;
 
-  std::ofstream out("solution.vtk");
+  std::ofstream out("solution.vtu");
 
   data_out.attach_dof_handler(dh);
 
@@ -74,5 +74,5 @@ int main()
     }
 
   data_out.build_patches(mapping, degree, DataOut<dim>::curved_inner_cells);
-  data_out.write_vtk(out);
+  data_out.write_vtu(out);
 }

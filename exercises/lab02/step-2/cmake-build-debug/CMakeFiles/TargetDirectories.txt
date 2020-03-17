@@ -1,0 +1,10 @@
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/info.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/strip_comments.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/run.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/step-2.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/debug.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/release.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/runclean.dir
+/home/elena/Documents/mhpc/courses/P2.3_seed/exercises/lab02/step-2/cmake-build-debug/CMakeFiles/distclean.dir
